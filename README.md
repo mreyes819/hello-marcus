@@ -6,8 +6,13 @@ Joe's change to ReadMe.md
 
 ## Team
 
+<<<<<<< HEAD
   - Corey Chau
   - Matt Reyes
+=======
+  - Corey Chau ----- I just made a change here hallo
+  - Matt Reyas
+>>>>>>> corey changed the readme
   - Scott Yoon
   - Joseph Lei
 
