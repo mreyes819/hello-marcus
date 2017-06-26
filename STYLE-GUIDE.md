@@ -1,3 +1,12 @@
+### ES6
+
+Whenever possible, use ES6 syntax. This includes but is not limited to
+
+* Fat arrow functions
+  * Caveat is if you need ES5 binding
+* let & const declarations
+* Destructuring
+
 ### Indentation
 
 When writing any block of code that is logically subordinate to the line immediately before and after it, that block should be indented two spaces more than the surrounding lines

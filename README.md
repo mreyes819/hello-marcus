@@ -5,14 +5,8 @@ Joe's change to ReadMe.md
 > Pithy project description
 
 ## Team
-
-<<<<<<< HEAD
   - Corey Chau
   - Matt Reyes
-=======
-  - Corey Chau ----- I just made a change here hallo
-  - Matt Reyas
->>>>>>> corey changed the readme
   - Scott Yoon
   - Joseph Lei
 
