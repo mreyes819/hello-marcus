@@ -1,9 +1,9 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 const app = express()
 
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+  res.send('Hello from the Heroku Server!')
 })
 
 app.listen(process.env.PORT, function () {
