@@ -8,7 +8,7 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
   },
-  "author": "Scott Yoon, Cory Chau, Joe Lei, Matthew Reyes",
+  "author": "Scott Yoon, Corey Chau, Joe Lei, Matthew Reyes",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.7.5",
@@ -21,12 +21,14 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
     "jquery": "^3.1.1",
+    "pg-bluebird": "^1.0.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "mongoose": "^4.8.6",
-    "mysql": "^2.13.0"
+    "request-promise": "^4.2.1",
+    "underscore": "^1.8.3"
   }
 }
