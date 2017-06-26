@@ -1,4 +1,6 @@
 ### node etc ###
+# API Keys
+api_key.js
 
 # Logs
 logs
