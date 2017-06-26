@@ -1,8 +1,6 @@
-Joe's change to ReadMe.md
+# Hello Marcus
 
-# Project Name
-
-> Pithy project description
+> Just say it, and Marcus does it.
 
 ## Team
   - Corey Chau
