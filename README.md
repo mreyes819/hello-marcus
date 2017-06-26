@@ -7,7 +7,7 @@ Joe's change to ReadMe.md
 ## Team
 
   - Corey Chau
-  - Matt Reyas
+  - Matt Reyes
   - Scott Yoon
   - Joseph Lei
 
