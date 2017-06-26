@@ -28,6 +28,7 @@
     "pg-bluebird": "^1.0.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "underscore": "^1.8.3"
   }
