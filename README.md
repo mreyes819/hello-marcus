@@ -42,9 +42,17 @@ npm install
 bower install
 ```
 
+### App PLan
+
+View the app plan [here](https://docs.google.com/document/d/1VnS2nWmhrQnm-ed_r_fEU9Qqk9QiBCGFSzvwa8l1ffc/edit)
+
+
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_DOC)
+View the project roadmap [here](https://docs.google.com/spreadsheets/d/1NkW4t51z79jExXhSUT2BQSOyc6LG7uqIltWkaLTu_oM/edit?usp=drive_web)
+
+### Style guide
+View the style guide [here](https://github.com/hello-marcus/hello-marcus/blob/master/STYLE-GUIDE.md)
 
 
 ## Contributing
