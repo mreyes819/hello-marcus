@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request-promise');
+const handler = require('./apihandler');
 
 router.get('/', (req, res) => {
   // send client side info
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
   res.send('../react-client/src/index');
 });
 
-router.get('/history', (req, res) => {
+router.get('/saved', (req, res) => {
   // get request should include credentials
   // look up query history of logged in user 
     // make API calls for each of the saved queries
@@ -17,22 +18,20 @@ router.get('/history', (req, res) => {
 
 });
 
-router.post('/history', (req, res) => {
+router.post('/saved', (req, res) => {
   // save query
   // this should save the API call as well as the parameters.
   res.send('post to history endpoint')
 });
 
-router.post('/', (req, res) => {
-  // send request information to voice parser
-  let query = req.params.words
-  console.log(req.params);
-    // on response, send a request using request to the appropriate API
+router.post('/voice', (req, res) => {
+  console.log('I got your voice object!', req.body);
+  // do a database query using the req.body
+  // then use the api name
+    let testApiName = 'yelp';
+    res.send(handler(testApiName));
+    // on response, send a request to the appropriate API
     // on response from API, send data back to client
 });
-
-/*
-  Should we have another util file or router file that handles all the different API requests?
-*/
 
 module.exports = router

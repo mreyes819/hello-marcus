@@ -1,7 +1,6 @@
 const yelp = (query) => {
   console.log('make a yelp api call');
-  const a = 'something';
-  return a;
+  return 'some text';
 }
 
 module.exports = yelp;
