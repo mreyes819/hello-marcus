@@ -4,6 +4,7 @@ const request = require('request-promise');
 
 router.get('/', (req, res) => {
   // send client side info
+  console.log('router working')
   res.send('Hello from the Heroku Server!');
 });
 
