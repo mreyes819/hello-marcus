@@ -1,23 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
-//hello world1
+import Search from './components/Search.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      replies: []
     }
   }
 
-  componentDidMount() {
+  handleVoiceSubmit() {
+    console.log('Handling voice...');
+    //Make Houndify API call
+
+    //Create obj to test if we can pass result to Node server
+    var obj = {test: "test"};
     $.ajax({
-      url: '/items',
+      url: '/voice',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(obj),
       success: (data) => {
         this.setState({
-          items: data
-        })
+          replies: data
+        });
       },
       error: (err) => {
         console.log('err', err);
@@ -26,11 +34,12 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
-    </div>)
+    return (
+      <div>
+        <Search handleVoiceSubmit = {this.handleVoiceSubmit.bind(this)}/>
+      </div>
+    )
   }
 }
 
-// ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));

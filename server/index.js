@@ -1,11 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express()
+const app = express();
+const port = process.env.PORT || 3000;
 
-app.get('/', function (req, res) {
-  res.send('Hello from the Heroku Server!');
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/../react-client/dist'));
+
+app.get('/', (req, res) => {
+  res.send('/index.html');
 });
 
-app.listen(process.env.PORT, function () {
-  console.log(`Server listening on port ${process.env.PORT}!`);
+app.post('/voice', (req, res) => {
+  console.log('I got your voice object!', req.body);
+});
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}!`);
 });
