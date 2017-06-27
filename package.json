@@ -27,14 +27,17 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
+    "chai": "^4.0.2",
     "express": "^4.15.0",
     "jest-cli": "^20.0.4",
     "jquery": "^3.1.1",
+    "mocha": "^3.4.2",
     "pg-bluebird": "^1.0.8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
+    "supertest": "^3.0.0",
     "underscore": "^1.8.3"
   }
 }
