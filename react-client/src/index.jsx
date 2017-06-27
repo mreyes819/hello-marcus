@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
+import List from './components/List.jsx';
 
 class App extends React.Component {
   constructor(props) {
