@@ -1,16 +1,32 @@
-DROP DATABASE IF EXISTS test;
+\connect test
 
-CREATE DATABASE test;
-
-USE test;
-
-CREATE TABLE items (
-  id int NOT NULL AUTO_INCREMENT,
-  quantity integer NOT NULL,
-  description varchar(50) NOT NULL,
-  PRIMARY KEY (ID)
+DROP TABLE IF EXISTS users CASCADE;
+CREATE TABLE users (
+  ID SERIAL PRIMARY KEY,
+  TOKEN varchar(255) NOT NULL,
+  NAME varchar(255) NOT NULL,
+  EMAIL varchar(255) NOT NULL,
+  PHONE varchar(255) NOT NULL
 );
 
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
- *  to create the database and the tables.*/
+DROP TABLE IF EXISTS saved_queries CASCADE;
+CREATE TABLE saved_queries (
+  ID SERIAL PRIMARY KEY,
+  API_ID INT REFERENCES apis (ID),
+  ARGUMENTS TEXT NOT NULL,
+  USER_ID INT REFERENCES users (ID),
+  CREATED_AT TIMESTAMP NOT NULL
+);
+
+DROP TABLE IF EXISTS apis CASCADE;
+CREATE TABLE apis (
+  ID SERIAL PRIMARY KEY,
+  NAME varchar(255)
+);
+
+DROP TABLE IF EXISTS words CASCADE;
+CREATE TABLE words (
+  ID SERIAL PRIMARY KEY,
+  API_ID INT REFERENCES apis (ID),
+  WORD TEXT NOT NULL
+);
