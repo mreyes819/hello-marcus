@@ -1,12 +1,14 @@
+-- WARNING! Speak to Joe or Matt first. CASCADE is very very dangerous.
+
 \connect test
 
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
   ID SERIAL PRIMARY KEY,
-  TOKEN varchar(255) NOT NULL,
-  NAME varchar(255) NOT NULL,
-  EMAIL varchar(255) NOT NULL,
-  PHONE varchar(255) NOT NULL
+  TOKEN VARCHAR(255) NOT NULL,
+  NAME VARCHAR(255) NOT NULL,
+  EMAIL VARCHAR(255) NOT NULL,
+  PHONE VARCHAR(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS saved_queries CASCADE;
