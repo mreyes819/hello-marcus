@@ -1,16 +1,34 @@
-DROP DATABASE IF EXISTS test;
+-- WARNING! Speak to Joe or Matt first. CASCADE is very very dangerous.
 
-CREATE DATABASE test;
+\connect test
 
-USE test;
-
-CREATE TABLE items (
-  id int NOT NULL AUTO_INCREMENT,
-  quantity integer NOT NULL,
-  description varchar(50) NOT NULL,
-  PRIMARY KEY (ID)
+DROP TABLE IF EXISTS users CASCADE;
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  token VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone VARCHAR(255) NOT NULL
 );
 
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
- *  to create the database and the tables.*/
+DROP TABLE IF EXISTS saved_queries CASCADE;
+CREATE TABLE saved_queries (
+  id SERIAL PRIMARY KEY,
+  api_id INT REFERENCES apis (id),
+  arguments TEXT NOT NULL,
+  user_id INT REFERENCES users (id),
+  created_at TIMESTAMP NOT NULL
+);
+
+DROP TABLE IF EXISTS apis CASCADE;
+CREATE TABLE apis (
+  id SERIAL PRIMARY KEY,
+  name varchar(255)
+);
+
+DROP TABLE IF EXISTS words CASCADE;
+CREATE TABLE words (
+  id SERIAL PRIMARY KEY,
+  api_id INT REFERENCES apis (id),
+  word TEXT NOT NULL
+);
