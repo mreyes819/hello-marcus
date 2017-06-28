@@ -1,7 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
+
+const bodyParser = require('body-parser');
+const words_db = require('../database-postgres/models/model_words.js')
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../react-client/dist'));
