@@ -29,6 +29,7 @@ router.post('/voice', (req, res) => {
   // do a database query using the req.body
   // then use the api name
     // let testApiName = 'yelp';
+    console.log(typeof handler)
     handler(req.body.api, req.body.loc)
     .then((apiResponse) => {
       console.log('API response ------------> \n', apiResponse);
