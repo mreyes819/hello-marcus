@@ -19,7 +19,8 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 //how to use cleverbot
 	// apis.cbot.getResponse('who is barack obama')
 	// .then((data) => console.log(data));
-
+apis.weather.getWeather('{"lat":"37.7837039","lon":"-122.4091297"}')
+.then((data) => console.log(data));
 //how to make a database call
 	// model.words.getAllWords()
 	// .then((data) => console.log(data));
