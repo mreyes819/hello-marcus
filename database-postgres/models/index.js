@@ -1,4 +1,4 @@
-module.exports.Apis = require('./apis');
-module.exports.Users = require('./users');
-module.exports.Words = require('./words');
-module.exports.SavedQueries = require('./saved-queries');
+module.exports.apis = require('./apis');
+module.exports.users = require('./users');
+module.exports.words = require('./words');
+module.exports.savedQueries = require('./saved-queries');
