@@ -6,14 +6,22 @@ const model = require('../database-postgres/models/index.js');
 require('dotenv').config();
 console.log('port inside index', process.env.PORT);
 const port = process.env.PORT;
+const apis = require('../server/apis/index.js');
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 
+
+//how to use cleverbot
+	// apis.cbot.getResponse('who is barack obama')
+	// .then((data) => console.log(data));
+
 //how to make a database call
-	// model.Words.getAllWords()
+	// model.words.getAllWords()
 	// .then((data) => console.log(data));
 
 app.use('/', router);
