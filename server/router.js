@@ -25,12 +25,17 @@ router.post('/saved', (req, res) => {
 });
 
 router.post('/voice', (req, res) => {
-  console.log('I got your voice object!', req.body);
+  console.log('I got your voice object!',typeof req.body.loc, req.body);
   // do a database query using the req.body
   // then use the api name
     // let testApiName = 'yelp';
-    handler(req.body.api, req.body.location)
-    .then()
+    handler(req.body.api, req.body.loc)
+    .then((apiResponse) => {
+      console.log('API response ------------> \n', apiResponse);
+    })
+    .catch((all) => {
+      console.log(all)
+    });
     // on response, send a request to the appropriate API
     // on response from API, send data back to client
 });
