@@ -1,13 +1,15 @@
 const pg = require('pg');
+require('dotenv').config();
 
-console.log(process.env.postgres_port);
+
+console.log(typeof process.env.postgres_port);
 
 var config = {
-  user:   process.env.postgres_user || 'hzwmjqtveugkyb', //env var: PGUSER
-  database: process.env.postgres_database ||  'd6jg4456clnb1r', //env var: PGDATABASE
-  password: process.env.postgres_password || 'eb13ac8e9913056992b2c32267eed892f1c1ab7caa632acbf7072dd9bb539e47', //env var: PGPASSWORD
-  host: process.env.postgres_host || 'ec2-23-23-86-179.compute-1.amazonaws.com', // Server hosting the postgres database
-  port: Number(process.env.postgres_port) || 5432, //env var: PGPORT
+  user: process.env.postgres_user,
+  database: process.env.postgres_database,
+  password: process.env.postgres_password,
+  host: process.env.postgres_host,
+  port: Number(process.env.postgres_port),
   max: 10, // max number of clients in the pool
   idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
   ssl: true

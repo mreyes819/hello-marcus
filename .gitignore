@@ -6,6 +6,9 @@ api_key.js
 logs
 *.log
 
+# Env
+*.env
+
 # Runtime data
 pids
 *.pid

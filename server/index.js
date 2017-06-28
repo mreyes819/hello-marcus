@@ -3,7 +3,9 @@ const app = express();
 const router = require('./router');
 const bodyParser = require('body-parser');
 const words_db = require('../database-postgres/models/model_words.js');
-const port = process.env.PORT || 3000;
+require('dotenv').config();
+console.log('port inside index', process.env.PORT);
+const port = process.env.PORT;
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
