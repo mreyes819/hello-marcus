@@ -1,21 +1,16 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
-
+const router = require('./router');
 const bodyParser = require('body-parser');
 const words_db = require('../database-postgres/models/model_words.js')
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 app.use(express.static(__dirname + '/../react-client/dist'));
 
-app.get('/', (req, res) => {
-  res.send('/index.html');
-});
+app.use('/', router);
 
-app.post('/voice', (req, res) => {
-  console.log('I got your voice object!', req.body);
-});
-
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}!`);
+app.listen(process.env.PORT, function () {
+  console.log(`Server listening on port ${process.env.PORT}!`);
 });
