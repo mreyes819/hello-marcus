@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const router = require('./router');
 const bodyParser = require('body-parser');
-const words_db = require('../database-postgres/models/model_words.js');
+const model = require('../database-postgres/models/index.js');
 require('dotenv').config();
 console.log('port inside index', process.env.PORT);
 const port = process.env.PORT;
@@ -11,6 +11,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../react-client/dist'));
+
+//how to make a database call
+	// model.Words.getAllWords()
+	// .then((data) => console.log(data));
 
 app.use('/', router);
 
