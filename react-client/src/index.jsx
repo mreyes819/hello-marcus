@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
+import Utils from './utils.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -10,6 +11,12 @@ class App extends React.Component {
       replies: []
     }
   }
+
+  componentDidMount() {
+    // ask user for location on page load
+    Utils.location();
+  }
+
 
   handleVoiceSubmit() {
     console.log('Handling voice...');
