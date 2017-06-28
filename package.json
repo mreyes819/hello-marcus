@@ -38,6 +38,7 @@
     "mocha": "^3.4.2",
     "pg": "^6.4.0",
     "pg-bluebird": "^1.0.8",
+    "pg-promise": "^6.2.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "request": "^2.81.0",
