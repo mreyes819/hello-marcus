@@ -25,7 +25,7 @@ router.post('/saved', (req, res) => {
 });
 
 router.post('/voice', (req, res) => {
-  console.log('I got your voice object!',typeof req.body.loc, req.body);
+  // console.log('I got your voice object!');
   // do a database query using the req.body
   // then use the api name
     // handler(req.body.api, req.body.loc)

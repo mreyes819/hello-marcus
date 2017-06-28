@@ -3,9 +3,9 @@ const request = require('request-promise');
 const weather = {
 
   getWeather: (loc) => {
-    let crd = JSON.parse(loc)
+    let coordinates = JSON.parse(loc)
     let options = {
-      uri: 'http://api.openweathermap.org/data/2.5/weather?lat=' + crd.lat + '&lon=' + crd.lon,
+      uri: 'http://api.openweathermap.org/data/2.5/weather?lat=' + coordinates.lat + '&lon=' + coordinates.lon,
       method: 'GET',
       headers: {
         'User-Agent': 'Request-Promise',
