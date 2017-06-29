@@ -51,14 +51,15 @@ class App extends React.Component {
   textQuery() {
     var query = document.getElementById('query').value;
     console.log(query);
+    console.log(this.state.location)
     $.ajax({
       url: '/voice',
       method: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({query: query}),
+      data: JSON.stringify({query: query, location: this.state.location}),
       success: (data) => {
         this.setState({
-          replies: data
+          replies: data,
         });
       },
       error: (err) => {
