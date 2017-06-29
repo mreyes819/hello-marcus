@@ -8,7 +8,7 @@ const cbot = {
     
     return request(query)
             .then((data) => {
-              return JSON.parse(data).output;
+              return {type: 'text', api: 'cleverbot', data: JSON.parse(data)};
             });
   }
 
