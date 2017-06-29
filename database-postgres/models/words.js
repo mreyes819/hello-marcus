@@ -1,5 +1,5 @@
 const db = require('../db-config.js');
-
+const _ = require('underscore');
 
 const Words = {
 
@@ -33,6 +33,40 @@ const Words = {
 
     return obj;
 
+  },
+
+  getWeatherString: (weatherObj) => {
+
+
+
+    let clouds = weatherObj.clouds.all;
+    let place = weatherObj.name;
+    let wind = weatherObj.wind.speed;
+    let description = weatherObj.weather[0].description.split(' ');
+
+
+    let skyLogic = clouds > 30 ? `It looks pretty cloudy outside. Clouds at ${clouds}% in ${place}.` : `It looks like the sky is all clear. Clouds at ${clouds}% in ${place}`;
+
+    let rainLogic = _.contains(description, 'rain') ? `No rain today in ${place}.` : `Looks like rain outside in ${place}.`;
+
+
+    let windLogic = wind > 5 ? `It's windy outside. Don't get blown away. Wind speed at ${wind} in ${place}` : `Don't worry about the wind today. Wind speed at ${wind} in ${place}`;
+
+    let weatherLogic = {
+      'sunny': skyLogic,
+      'sun': skyLogic,
+      'cloudy': skyLogic,
+      'cloud': skyLogic,
+      'clouds': skyLogic,
+      'rain': rainLogic,
+      'raining': rainLogic,
+      'rainy' : rainLogic,
+      'windy': windLogic,
+      'wind': windLogic,
+    }
+    
+    return weatherLogic;
+    
   }
 
 
