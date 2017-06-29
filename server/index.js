@@ -8,6 +8,8 @@ console.log('port inside index', process.env.PORT);
 const port = process.env.PORT;
 const apis = require('../server/apis/index.js');
 const fs = require('fs');
+const fred = require('./fred/engine.js')
+
 
 
 
@@ -15,6 +17,12 @@ const fs = require('fs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../react-client/dist'));
+
+
+
+
+
+
 
 app.use('/', router);
 
