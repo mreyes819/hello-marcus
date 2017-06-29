@@ -7,6 +7,7 @@ const Houndify = require('houndify');
 const path = require('path');
 const https = require('https');
 
+const fred = require('./fred/engine');
 
 router.get('/', (req, res) => {
   // send client side info
@@ -30,11 +31,15 @@ router.post('/saved', (req, res) => {
 });
 
 router.post('/voice', (req, res) => {
-  // console.log('I got your voice object!');
-  // do a database query using the req.body
-  // then use the api name
-  // on response, send a request to the appropriate API
-  // on response from API, send data back to client
+  
+  fred()
+  .then((data) => {
+    res.send(data);
+  })
+  .catch(() => {
+    res.send('Sorry, something went wrong');
+  });
+
 });
 
 // authenticates houndify requests

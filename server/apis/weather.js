@@ -4,13 +4,15 @@ require('dotenv').config();
 const weather = {
 
   getResponse: (loc, placeStr) => {
+
+    console.log('ran weather');
+
     if(!placeStr) {
       let coordinates = JSON.parse(loc);
       var query = 'http://api.openweathermap.org/data/2.5/weather?lat=' + coordinates.lat + '&lon=' + coordinates.lon;
     } else {
       query = 'http://api.openweathermap.org/data/2.5/weather?q=' + placeStr;
     }
-    console.log(`${process.env.weather_api_key}`)
     var options = {
       uri: query,
       method: 'GET',
@@ -20,7 +22,8 @@ const weather = {
         'x-api-key': `${process.env.weather_api_key}`
       }
     };
-    request(options)
+   
+   return request(options)
     .then((data) => {
       let apiResponse = {
         type: 'widget',
