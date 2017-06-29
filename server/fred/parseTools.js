@@ -44,7 +44,7 @@ const Tools = {
 
     // let words = Object.keys(weatherLogic);
 
-    let weatherText = Tools.findMatch(str, weatherLogic) || "Here's the weather in ${obj.name}."
+    let weatherText = Tools.findMatch(str, weatherLogic) || `Here's the weather in ${obj.name}.`;
 
     return weatherText;
 
