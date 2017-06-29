@@ -2,7 +2,7 @@ const request = require('request-promise');
 
 const weather = {
 
-  getWeather: (loc) => {
+  getResponse: (loc) => {
     let coordinates = JSON.parse(loc)
     let options = {
       uri: 'http://api.openweathermap.org/data/2.5/weather?lat=' + coordinates.lat + '&lon=' + coordinates.lon,
