@@ -51,6 +51,7 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "supertest": "^3.0.0",
+    "transfer-webpack-plugin": "^0.1.4",
     "underscore": "^1.8.3"
   }
 }
