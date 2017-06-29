@@ -40,23 +40,13 @@ const Tools = {
 
   constructWeathertext: (str, obj) => {
 
-    let string = model.words.getWeatherString(str, obj).rain;
+    let weatherLogic = model.words.getWeatherString(obj)
 
-    let weatherObj = obj;
-    let place = weatherObj.name;
+    // let words = Object.keys(weatherLogic);
 
+    let weatherText = Tools.findMatch(str, weatherLogic) || "Here's the weather in ${obj.name}."
 
-
-
-    return string;
-
-
-
-
-
-    // console.log(JSON.parse(weatherObj).name);
-
-    // return text;
+    return weatherText;
 
   }
 

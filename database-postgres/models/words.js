@@ -47,7 +47,7 @@ const Words = {
 
     let skyLogic = clouds > 30 ? `It looks pretty cloudy outside. Clouds at ${clouds}% in ${place}.` : `It looks like the sky is all clear. Clouds at ${clouds}% in ${place}`;
 
-    let rainLogic = _.contains(description, 'rain') ? `No rain today in ${place}.` : `Looks like rain outside in ${place}.`;
+    let rainLogic = _.contains(description, 'rain') || _.contains(description, 'thunderstorm') ?  `Looks like it's raining in ${place}.` : `No rain in ${place} today.`;
 
 
     let windLogic = wind > 5 ? `It's windy outside. Don't get blown away. Wind speed at ${wind} in ${place}` : `Don't worry about the wind today. Wind speed at ${wind} in ${place}`;
