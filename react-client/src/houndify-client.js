@@ -43,7 +43,7 @@ module.exports.houndifyClient = (location) => {
           contentType: 'application/json',
           data: JSON.stringify(customResponse),
           success: (data) => {
-            console.log('issue ', data);
+            console.log('voice query response from server: ', data);
           },
           error: (err) => {
             console.log('err', err);

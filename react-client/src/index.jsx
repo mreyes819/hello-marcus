@@ -61,6 +61,7 @@ class App extends React.Component {
         WrittenResponseLong: query, 
         location: this.state.location}),
       success: (data) => {
+        console.log('text query response from server: ', data);
         this.setState({
           replies: data
         });
