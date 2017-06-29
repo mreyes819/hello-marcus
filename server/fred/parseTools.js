@@ -3,27 +3,41 @@ const nlp = require('compromise');
 
 const Tools = {
 
-	findMatch: (str, obj) => {
+  //find the api name
 
-		let strArr = str.split(' ');
-		let result = ''
+  findMatch: (str, obj) => {
 
-		for (var i = 0; i < strArr.length; i++) {
-			for (var key in obj) {
+    let strArr = str.split(' ');
+    let result = '';
 
-				if (strArr[i] === key) {
-					result = obj[key]
+    for (var i = 0; i < strArr.length; i++) {
+      for (var key in obj) {
 
-				}
-			}
-		}
+        if (strArr[i] === key) {
+          result = obj[key];
 
-		return result;
-	}
+        }
+      }
+    }
 
+    return result;
+  },
 
+  //find a place in the string if a place exists
 
-}
+  findPlace: (str) => {
+
+    let nlpStr = nlp(str);
+
+    if (nlpStr.places().data().length > 0) {
+      return nlpStr.places().data()[0].normal;
+    } else {
+      return '';
+    }
+
+  }
+
+};
 
 module.exports = Tools;
 

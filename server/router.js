@@ -35,6 +35,9 @@ router.post('/voice', (req, res) => {
   fred()
   .then((data) => {
     res.send(data);
+  })
+  .catch(() => {
+    res.send('Sorry, something went wrong');
   });
 
 });
