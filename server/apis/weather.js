@@ -27,7 +27,6 @@ const weather = {
         api: 'weather',
         data: JSON.parse(data)
       };
-      console.log(apiResponse)
       return apiResponse;
     })
   }
