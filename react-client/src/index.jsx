@@ -59,7 +59,7 @@ class App extends React.Component {
       data: JSON.stringify({query: query, location: this.state.location}),
       success: (data) => {
         this.setState({
-          replies: data,
+          replies: data
         });
       },
       error: (err) => {
