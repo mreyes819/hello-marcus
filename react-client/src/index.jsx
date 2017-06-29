@@ -56,7 +56,10 @@ class App extends React.Component {
       url: '/voice',
       method: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({query: query, location: this.state.location}),
+      data: JSON.stringify({
+        RawTranscription: query, 
+        WrittenResponseLong: query, 
+        location: this.state.location}),
       success: (data) => {
         this.setState({
           replies: data
