@@ -1,12 +1,1 @@
-{
 
-  "clientId": "F9_-nNkqfW0GYzyg_h8i4w==",
-  "clientKey": "zmKlP-JIPBmarYwgd8y0OFplPlPxgkBxqupHGpvgRHYKcsxjtWFcV05GxYFQ1yN4TcDB5GtXLf50B9ER5Cp7rQ==",
-
-  "port": 3000,
-
-  "https": false,
-  "sslKeyFile": "server.key",
-  "sslCrtFile": "server.crt"
-
-}
