@@ -22,6 +22,23 @@ export default {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     };
 
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    return new Promise((resolve, reject) => {
+      // success, error, options
+
+    navigator.geolocation.getCurrentPosition((success, error, options) => {
+
+      if (error) {
+        reject(error);
+      } else {
+        resolve(success);
+      }
+
+
+    });
+
+
+    })
+
   }
 };
+
