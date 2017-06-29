@@ -32,6 +32,4 @@ const weather = {
   }
 };
 
-weather.getResponse('{"lat":"37.7837039","lon":"-122.4091297"}', 'London');
-
 module.exports = weather;
