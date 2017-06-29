@@ -9,9 +9,11 @@ const response = (str = "is there fog today?", loc = '{"lat":"37.7837039","lon":
 
   return model.words.getWordsApiMatch()
     .then((data) => {
+    	//find an api match
       return parseTools.findMatch(str, data);
     })
     .then((api) => {
+    	//call api
       return apiHandler(api, loc, place, str);
     });
 

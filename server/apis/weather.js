@@ -1,9 +1,11 @@
 const request = require('request-promise');
+const fredTools = require('../fred/parseTools');
 require('dotenv').config();
+
 
 const weather = {
 
-  getResponse: (loc, placeStr) => {
+  getResponse: (loc, placeStr, originalStr) => {
 
     console.log('ran weather');
 
@@ -25,10 +27,16 @@ const weather = {
    
    return request(options)
     .then((data) => {
+
+      let weatherObj = JSON.parse(data);
+
+      let response = fredTools.constructWeathertext(originalStr, weatherObj);
+
       let apiResponse = {
         type: 'widget',
         api: 'weather',
-        data: JSON.parse(data)
+        text: response,
+        data: weatherObj
       };
       return apiResponse;
     })

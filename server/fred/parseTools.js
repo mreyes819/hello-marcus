@@ -1,4 +1,5 @@
 const nlp = require('compromise');
+const model = require('../../database-postgres/models');
 
 
 const Tools = {
@@ -29,11 +30,23 @@ const Tools = {
 
     let nlpStr = nlp(str);
 
-    if (nlpStr.places().data().length > 0) {
-      return nlpStr.places().data()[0].normal;
+    if (nlpStr.places().data().length > 0) { //if place in string exists
+      return nlpStr.places().data()[0].normal; //return place string
     } else {
       return '';
     }
+
+  },
+
+  constructWeathertext: (str, obj) => {
+
+    let weatherLogic = model.words.getWeatherString(obj)
+
+    // let words = Object.keys(weatherLogic);
+
+    let weatherText = Tools.findMatch(str, weatherLogic) || `Here's the weather in ${obj.name}.`;
+
+    return weatherText;
 
   }
 
