@@ -17,4 +17,7 @@ const response = (str = "is there fog today?", loc = '{"lat":"37.7837039","lon":
 
 };
 
+response()
+.then((data) => console.log(data))
+
 module.exports = response;

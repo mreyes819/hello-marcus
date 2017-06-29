@@ -13,10 +13,6 @@ const fred = require('./fred/engine.js')
 
 
 
-
-
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../react-client/dist'));
