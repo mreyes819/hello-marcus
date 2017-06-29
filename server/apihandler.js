@@ -1,6 +1,6 @@
 const api = require('./apis');
 
-// handler takes 2 arguments, which API to call and the parameters to call it with
+// handler takes 4 arguments, which API, current location object, place str if any, original user string
 const handler = (apiName, loc, placeStr, originalStr) => { 
   if (apiName) {
     return api[apiName].getResponse(loc, placeStr);
