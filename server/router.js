@@ -32,8 +32,7 @@ router.post('/saved', (req, res) => {
 
 router.post('/voice', (req, res) => {
   
-  
-  fred(req.body.RawTranscription, JSON.stringify(req.body.location))
+  fred(req.body.RawTranscription, req.body.location)
   .then((data) => {
     res.send(data);
   })
