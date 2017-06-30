@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: {type: "text", api: "cleverbot", text: "hello", data: Object},
+      response: {type: "text", api: "cleverbot", text: "What can I help you with?", data: Object},
       location: {}
     };
 
@@ -66,6 +66,7 @@ class App extends React.Component {
     var query = document.getElementById('query').value;
     console.log(query);
     console.log(this.state.location)
+    var that = this;
     $.ajax({
       url: '/voice',
       method: 'POST',
@@ -75,9 +76,9 @@ class App extends React.Component {
         WrittenResponseLong: query,
         location: this.state.location}),
       success: (data) => {
-        console.log('text query response from server: ', data);
-        this.setState({
-          replies: data
+        console.log('text query response from server: ', data.data);
+        that.setState({
+          response: data
         });
       },
       error: (err) => {

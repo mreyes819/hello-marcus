@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default {
-
   location: () => {
     let options = {
       enableHighAccuracy: true,
@@ -24,21 +23,14 @@ export default {
 
     return new Promise((resolve, reject) => {
       // success, error, options
-
-    navigator.geolocation.getCurrentPosition((success, error, options) => {
-
-      if (error) {
-        reject(error);
-      } else {
-        resolve(success);
-      }
-
-
-    });
-
-
+      navigator.geolocation.getCurrentPosition((success, error, options) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(success);
+        }
+      });
     })
-
   }
 };
 
