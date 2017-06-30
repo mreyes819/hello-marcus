@@ -4,13 +4,14 @@ import $ from 'jquery';
 import Utils from './utils.js';
 import client_env from './client_env.js';
 import houndifyclient from './houndify-client.js';
+import ResponseCard from './components/ResponseCard.jsx';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      replies: [],
+      response: {type: "text", api: "cleverbot", text: "hello", data: Object},
       location: {}
     };
 
@@ -33,9 +34,22 @@ class App extends React.Component {
       })
     })
   }
+  //trigger response state to change when getting back reply from Fred
+  handleServerResponse(error, response) {
+    if (error) {
+      console.log('handleServerResponse error: ', error);
+    } else {
+      console.log('handleServerResponse: ', response);
+      this.setState({
+        response: response
+      })
+      console.log("after changing state: ", this.state.response);
+    }
+  }
+
   //handle voice button click
   startStopVoiceSearch() {
-    var myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location));
+    var myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location, this.handleServerResponse.bind(this)));
     if (myClient.voiceSearch.isStreaming()) {
       //stops streaming voice search requests, expects the final response from backend
       myClient.voiceSearch.stop();
@@ -57,8 +71,8 @@ class App extends React.Component {
       method: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({
-        RawTranscription: query, 
-        WrittenResponseLong: query, 
+        RawTranscription: query,
+        WrittenResponseLong: query,
         location: this.state.location}),
       success: (data) => {
         console.log('text query response from server: ', data);
@@ -76,6 +90,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="ui center aligned basic segment container">
+          <ResponseCard response={this.state.response} />
           <form id="form" className="ui form" action="javascript:void(0);">
             <div className="ui action big labeled fluid input field">
               <div className="ui icon basic label button" onClick= {this.startStopVoiceSearch.bind(this)}>

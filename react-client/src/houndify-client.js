@@ -2,7 +2,7 @@ import client_env from './client_env.js';
 import $ from 'jquery';
 const clientID = client_env.client_env.houndify_clientID;
 
-module.exports.houndifyClient = (location) => {
+module.exports.houndifyClient = (location, handleServerResponse) => {
   return {
     //Your Houndify Client ID
     clientId: clientID,
@@ -44,9 +44,11 @@ module.exports.houndifyClient = (location) => {
           data: JSON.stringify(customResponse),
           success: (data) => {
             console.log('voice query response from server: ', data);
+            handleServerResponse(null, data);
           },
           error: (err) => {
             console.log('err', err);
+            handleServerResponse(err, null);
           }
         });
       }
