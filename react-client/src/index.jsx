@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: {type: "text", api: "cleverbot", text: "hello", data: Object},
+      response: {type: "text", api: "cleverbot", text: "What can I help you with?", data: Object},
       location: {}
     };
 
@@ -75,9 +75,9 @@ class App extends React.Component {
         WrittenResponseLong: query,
         location: this.state.location}),
       success: (data) => {
-        console.log('text query response from server: ', data);
+        console.log('text query response from server: ', data.data);
         this.setState({
-          replies: data
+          response: data
         });
       },
       error: (err) => {
