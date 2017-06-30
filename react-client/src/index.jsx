@@ -66,7 +66,6 @@ class App extends React.Component {
     var query = document.getElementById('query').value;
     console.log(query);
     console.log(this.state.location)
-    var that = this;
     $.ajax({
       url: '/voice',
       method: 'POST',
@@ -77,7 +76,7 @@ class App extends React.Component {
         location: this.state.location}),
       success: (data) => {
         console.log('text query response from server: ', data.data);
-        that.setState({
+        this.setState({
           response: data
         });
       },
