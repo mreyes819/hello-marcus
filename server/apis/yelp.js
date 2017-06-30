@@ -22,7 +22,7 @@ const yelp = {
 
       let restaurantData = yelpData.businesses[0];
 
-      let response = fredTools.constructWeathertext(originalStr, restaurantData);
+      let response = fredTools.constructFoodText(originalStr, restaurantData);
       
       let apiResponse = {
         type: 'widget',
