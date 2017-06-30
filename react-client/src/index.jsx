@@ -34,7 +34,8 @@ class App extends React.Component {
       })
     })
   }
-  //trigger response state to change when getting back reply from Fred
+
+  // trigger response state to change when getting back reply from Fred
   handleServerResponse(error, response) {
     if (error) {
       console.log('handleServerResponse error: ', error);
@@ -44,7 +45,18 @@ class App extends React.Component {
         response: response
       })
       console.log("after changing state: ", this.state.response);
+      this.responseTextToSpeech(response.text);
     }
+  }
+
+  // convert text to speech using chrome built in function
+  responseTextToSpeech(text) {
+    let msg = new SpeechSynthesisUtterance();
+    let voices = window.speechSynthesis.getVoices();
+    msg.text = text;
+    msg.rate = 12 / 10;
+    msg.pitch = 0;
+    speechSynthesis.speak(msg);
   }
 
   //handle voice button click
@@ -79,6 +91,7 @@ class App extends React.Component {
         this.setState({
           response: data
         });
+        this.responseTextToSpeech(data.text);
       },
       error: (err) => {
         console.log('err', err);
