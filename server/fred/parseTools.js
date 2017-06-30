@@ -48,6 +48,9 @@ const Tools = {
 
     return weatherText;
 
+  },
+  constructFoodText: (str, obj) => {
+    return `You should eat at ${obj.name}`
   }
 
 };
