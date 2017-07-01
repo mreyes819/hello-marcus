@@ -8,14 +8,13 @@ const weather = {
   getResponse: (loc, placeStr, originalStr) => {
 
     console.log('ran weather');
-
+    let query = null
     if(!placeStr) {
-      let coordinates = JSON.parse(loc);
-      var query = 'http://api.openweathermap.org/data/2.5/weather?lat=' + coordinates.lat + '&lon=' + coordinates.lon;
+      query = 'http://api.openweathermap.org/data/2.5/weather?lat=' + loc.lat + '&lon=' + loc.lon;
     } else {
       query = 'http://api.openweathermap.org/data/2.5/weather?q=' + placeStr;
     }
-    var options = {
+    let options = {
       uri: query,
       method: 'GET',
       headers: {

@@ -3,10 +3,10 @@ const fredTools = require('../fred/parseTools');
 require('dotenv').config();
 
 
-const yelp = {
+const restaurant = {
 
   getResponse: (loc, placeStr, originalStr) => {
-    var options = {
+    let options = {
       uri: `https://api.yelp.com/v3/businesses/search?term=food&longitude=${loc.lon}&latitude=${loc.lat}&sort_by=rating`,
       method: 'GET',
       headers: {
@@ -21,6 +21,14 @@ const yelp = {
     .then((yelpData) => {
 
       let restaurantData = yelpData.businesses[0];
+      let restaurantDetails = {
+        name: restaurantData.name,
+        image: restaurantData.image_url,
+        numReviews: restaurantData.review_count,
+        rating: restaurantData.rating,
+        website: restaurantData.url
+      }
+      
 
       let response = fredTools.constructFoodText(originalStr, restaurantData);
       
@@ -28,7 +36,7 @@ const yelp = {
         type: 'widget',
         api: 'yelp',
         text: response,
-        data: restaurantData
+        data: restaurantDetails
       };
       return apiResponse;
     });
@@ -36,4 +44,4 @@ const yelp = {
 
 };
 
-module.exports = yelp;
+module.exports = restaurant;

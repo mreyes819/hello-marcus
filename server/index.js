@@ -7,19 +7,15 @@ const model = require('../database-postgres/models/index.js');
 console.log('port inside index', process.env.PORT);
 const port = process.env.PORT;
 const apis = require('../server/apis/index.js');
-
 const fs = require('fs');
 const fred = require('./fred/engine.js')
 
-
-
-
-
+// Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../react-client/dist'));
 
-
+// Router
 app.use('/', router);
 
 app.listen(port, function () {
