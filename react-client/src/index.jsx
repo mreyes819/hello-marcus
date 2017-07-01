@@ -13,7 +13,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       response: {type: "text", api: "default", text: "What can I help you with?", data: Object},
-      location: {},
       response: {type: "text", api: "cleverbot", text: "What can I help you with?", data: Object},
       location: {},
       micOn: false
