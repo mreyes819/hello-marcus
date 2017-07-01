@@ -8,7 +8,8 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "test": "jest",
-    "mocha": "mocha server/tests"
+    "mocha": "mocha server/tests",
+    "heroku-postbuild": "./node_modules/.bin/webpack -p --config ./webpack.config.js --progress"
   },
   "author": "Scott Yoon, Corey Chau, Joe Lei, Matthew Reyes",
   "license": "ISC",
