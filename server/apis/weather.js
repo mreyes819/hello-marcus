@@ -10,8 +10,7 @@ const weather = {
     console.log('ran weather');
 
     if(!placeStr) {
-      let coordinates = JSON.parse(loc);
-      var query = 'http://api.openweathermap.org/data/2.5/weather?lat=' + coordinates.lat + '&lon=' + coordinates.lon;
+      var query = 'http://api.openweathermap.org/data/2.5/weather?lat=' + loc.lat + '&lon=' + loc.lon;
     } else {
       query = 'http://api.openweathermap.org/data/2.5/weather?q=' + placeStr;
     }
