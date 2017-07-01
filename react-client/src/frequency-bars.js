@@ -1,4 +1,8 @@
- module.exports = function() {
+ module.exports.bars = (that) => {
+
+    console.log('top level', this);
+
+
 
     let constraints = window.constraints = {
       audio: true,
@@ -58,7 +62,10 @@
 
           let WIDTH = canvas.width;
           let HEIGHT = canvas.height;
-          drawVisual = requestAnimationFrame(draw);
+
+          if (that.state.micOn) {
+            drawVisual = requestAnimationFrame(draw);
+          } 
 
           analyser.getFloatFrequencyData(dataArray);
 
@@ -69,14 +76,22 @@
           let barHeight;
           let x = 0;
 
-          for (let i = 0; i < bufferLength; i++) {
-            barHeight = (dataArray[i] + 140)*1;
-            
-            canvasCtx.fillStyle = 'rgb(' + Math.floor(barHeight) + ',0,0)';
-            canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+          if (that.state.micOn) {
+            for (let i = 0; i < bufferLength; i++) {
+              barHeight = (dataArray[i] + 140)*1;
+              
+              canvasCtx.fillStyle = 'rgb(' + Math.floor(barHeight) + ',0,0)';
+              canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
 
-            x += barWidth + 1;
+              x += barWidth + 1;
+
+            } 
+
+
           }
+  
+
+     
         }
 
         draw();

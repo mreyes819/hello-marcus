@@ -79,7 +79,8 @@ class App extends React.Component {
       //stops streaming voice search requests, expects the final response from backend
       myClient.voiceSearch.stop();
     } else {
-      frequencyBars();
+      // console.log('inside index.jsx',this);
+      frequencyBars.bars.call(this, this);
 
       this.setState({
         micOn: true
@@ -127,10 +128,8 @@ class App extends React.Component {
   render () {
     var border = {border: 0, outline: 'none'};
     return (
-      <div>
+   <div className="wrapper">
         <div className="ui centered  grid" >
-      <div className ='wrapper'>
-        <div className="ui center aligned basic segment container">
           <ResponseCard response={this.state.response} />
         </div>
         <div className="ui centered grid">
@@ -151,7 +150,8 @@ class App extends React.Component {
           </form>
         </div>
 
-            <canvas className="visualizer" width="640" height="100"></canvas> 
+        <canvas className="visualizer" width="640" height="100"></canvas> 
+
 
       </div>
     )
@@ -159,3 +159,5 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+
