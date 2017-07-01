@@ -2,7 +2,7 @@ import client_env from './client_env.js';
 import $ from 'jquery';
 const clientID = client_env.client_env.houndify_clientID;
 
-module.exports.houndifyClient = (location, handleServerResponse) => {
+module.exports.houndifyClient = (location, handleServerResponse, setMicState) => {
   return {
     //Your Houndify Client ID
     clientId: clientID,
@@ -37,6 +37,7 @@ module.exports.houndifyClient = (location, handleServerResponse) => {
         customResponse.WrittenResponseLong = response.AllResults[0].WrittenResponseLong;
         customResponse.location = location;
         // Send voice result to server
+
         $.ajax({
           url: '/voice',
           method: 'POST',
@@ -52,6 +53,8 @@ module.exports.houndifyClient = (location, handleServerResponse) => {
           }
         });
       }
+
+
     },
 
     //Fires if error occurs during the request
@@ -80,6 +83,9 @@ module.exports.houndifyClient = (location, handleServerResponse) => {
     //(VAD: https://houndify.com/docs#voice-activity-detection)
     onRecordingStopped: function() {
       document.getElementById("voiceIcon").className = "unmute huge icon";
+      setMicState();
+
+      document.getElementById("voiceIcon").className = "unmute big icon";
       document.getElementById("textSearchButton").disabled = false;
       document.getElementById("query").readOnly = false;
     },

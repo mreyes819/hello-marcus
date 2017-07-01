@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Utils from './utils.js';
 import client_env from './client_env.js';
 import houndifyclient from './houndify-client.js';
+import frequencyBars from './frequency-bars.js';
 import ResponseCard from './components/ResponseCard.jsx';
 
 class App extends React.Component {
@@ -12,7 +13,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       response: {type: "text", api: "default", text: "What can I help you with?", data: Object},
-      location: {}
+      response: {type: "text", api: "cleverbot", text: "What can I help you with?", data: Object},
+      location: {},
+      micOn: false
     };
 
     const clientID = client_env.client_env.houndify_clientID;
@@ -59,20 +62,41 @@ class App extends React.Component {
     speechSynthesis.speak(msg);
   }
 
+  setMicState() {
+
+    this.setState({
+      micOn: false
+    });
+
+  }
+
   //handle voice button click
   startStopVoiceSearch() {
-    var myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location, this.handleServerResponse.bind(this)));
+    var myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location, this.handleServerResponse.bind(this), this.setMicState.bind(this)));
     if (myClient.voiceSearch.isStreaming()) {
+      console.log('window object stop', window);
       //stops streaming voice search requests, expects the final response from backend
       myClient.voiceSearch.stop();
     } else {
+      // console.log('inside index.jsx',this);
+      frequencyBars.bars.call(this, this);
+
+      this.setState({
+        micOn: true
+      });
+
       myClient.voiceSearch.startRecording(this.requestInfo);
+
+      //display frequency bars
+      ///audio frequency stop
       //starts streaming of voice search requests to Houndify backend
       document.getElementById("voiceIcon").className = "loading circle notched icon big";
       document.getElementById("textSearchButton").disabled = true;
       document.getElementById("query").readOnly = true;
     }
   }
+
+
   //handle user text input
   textQuery() {
     var query = document.getElementById('query').value;
@@ -103,7 +127,7 @@ class App extends React.Component {
   render () {
     var border = {border: 0, outline: 'none'};
     return (
-      <div>
+   <div className="wrapper">
         <div className="ui centered  grid" >
           <ResponseCard response={this.state.response} />
         </div>
@@ -124,9 +148,15 @@ class App extends React.Component {
             </button>
           </form>
         </div>
+
+        <canvas className="visualizer" width="640" height="100"></canvas> 
+
+
       </div>
     )
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+
