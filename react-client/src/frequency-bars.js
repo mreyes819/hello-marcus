@@ -1,8 +1,5 @@
  module.exports.bars = (that) => {
 
-    console.log('top level', this);
-
-
 
     let constraints = window.constraints = {
       audio: true,
@@ -87,11 +84,10 @@
 
             } 
 
-
+          } else {
+            audioCtx.close();
           }
   
-
-     
         }
 
         draw();
