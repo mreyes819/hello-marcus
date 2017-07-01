@@ -14,7 +14,7 @@ const weather = {
     } else {
       query = 'http://api.openweathermap.org/data/2.5/weather?q=' + placeStr;
     }
-    var options = {
+    let options = {
       uri: query,
       method: 'GET',
       headers: {
