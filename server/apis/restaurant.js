@@ -6,7 +6,7 @@ require('dotenv').config();
 const restaurant = {
 
   getResponse: (loc, placeStr, originalStr) => {
-    var options = {
+    let options = {
       uri: `https://api.yelp.com/v3/businesses/search?term=food&longitude=${loc.lon}&latitude=${loc.lat}&sort_by=rating`,
       method: 'GET',
       headers: {
