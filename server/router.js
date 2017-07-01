@@ -12,7 +12,7 @@ const fred = require('./fred/engine');
 router.get('/', (req, res) => {
   // send client side info
   console.log('router working')
-  res.send('../react-client/src/index.jsx');
+  res.send('../react-client/dist/index.html');
 });
 
 router.get('/saved', (req, res) => {
