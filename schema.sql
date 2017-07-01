@@ -1,7 +1,5 @@
 -- WARNING! Speak to Joe or Matt first. CASCADE is very very dangerous.
 
-\connect test
-
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
