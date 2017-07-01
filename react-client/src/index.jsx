@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: {type: "text", api: "cleverbot", text: "What can I help you with?", data: Object},
+      response: {type: "text", api: "default", text: "What can I help you with?", data: Object},
       location: {}
     };
 
@@ -99,25 +99,29 @@ class App extends React.Component {
     });
   }
 
+
   render () {
+    var border = {border: 0, outline: 'none'};
     return (
       <div>
-        <div className="ui center aligned basic segment container">
+        <div className="ui centered  grid" >
           <ResponseCard response={this.state.response} />
+        </div>
+        <div className="ui centered grid">
           <form id="form" className="ui form" action="javascript:void(0);">
             <div className="ui action big labeled fluid input field">
-              <div className="ui icon basic label button" onClick= {this.startStopVoiceSearch.bind(this)}>
-                <i id="voiceIcon" className="unmute big icon"></i>
+              <div className="ui icon basic label button" onClick= {this.startStopVoiceSearch.bind(this)} style={border}>
+                <i id="voiceIcon" className="unmute huge icon"></i>
               </div>
-              <input id="query" type="text" placeholder="Click on a microphone icon or type in your query" />
-              <button id="textSearchButton" className="ui icon button" onClick= {this.textQuery.bind(this)}>
-                 <i className="search big icon"></i>
-              </button>
             </div>
             <div className="ui field" hidden>
               <label>Response object</label>
               <textarea id="responseJSON"></textarea>
             </div>
+            <input id="query" type="text" placeholder="Click on a microphone icon or type in your query" />
+            <button id="textSearchButton" className="ui icon button" onClick= {this.textQuery.bind(this)}>
+               <i className="search big icon"></i>
+            </button>
           </form>
         </div>
       </div>
