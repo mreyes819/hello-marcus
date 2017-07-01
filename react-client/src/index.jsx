@@ -63,16 +63,126 @@ class App extends React.Component {
   startStopVoiceSearch() {
     var myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location, this.handleServerResponse.bind(this)));
     if (myClient.voiceSearch.isStreaming()) {
+      console.log('window object stop', window);
       //stops streaming voice search requests, expects the final response from backend
       myClient.voiceSearch.stop();
     } else {
       myClient.voiceSearch.startRecording(this.requestInfo);
+
+      this.audioFrequency();
+
+      ///audio frequency stop
       //starts streaming of voice search requests to Houndify backend
       document.getElementById("voiceIcon").className = "loading circle notched icon big";
       document.getElementById("textSearchButton").disabled = true;
       document.getElementById("query").readOnly = true;
     }
   }
+
+  audioFrequency() {
+
+    var constraints = window.constraints = {
+      audio: true,
+      video: false
+    };
+
+    function handleSuccess(stream) {
+
+      var audioTracks = stream.getAudioTracks();
+      console.log('Got stream with constraints:', constraints);
+      console.log('Using audio device: ' + audioTracks[0].label);
+      stream.oninactive = function() {
+        console.log('Stream ended');
+      };
+      window.stream = stream; // make variable available to browser console
+      var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      var analyser = audioCtx.createAnalyser();
+
+      analyser.minDecibels = -90;
+      analyser.maxDecibels = -10;
+      analyser.smoothingTimeConstant = 0.85;
+
+      var distortion = audioCtx.createWaveShaper();
+      var gainNode = audioCtx.createGain();
+      var biquadFilter = audioCtx.createBiquadFilter();
+      var convolver = audioCtx.createConvolver();
+
+
+
+
+      var source = audioCtx.createMediaStreamSource(stream);
+      source.connect(analyser);
+      analyser.connect(distortion); 
+       source.connect(analyser);
+       analyser.connect(distortion);
+       distortion.connect(biquadFilter);
+       biquadFilter.connect(convolver);
+       convolver.connect(gainNode);
+       gainNode.connect(audioCtx.destination);
+
+      analyser.fftSize = 256;
+      var bufferLength = analyser.frequencyBinCount;
+      console.log(bufferLength);
+      var dataArray = new Float32Array(bufferLength);
+
+      var canvas = document.querySelector('.visualizer');
+      var canvasCtx = canvas.getContext("2d");
+
+      var intendedWidth = document.querySelector('.wrapper').clientWidth;
+
+      canvas.setAttribute('width',intendedWidth);
+
+      canvas.setAttribute('width', 500);
+
+      canvasCtx.clearRect(0, 0, 200, 200);
+
+      var drawVisual;
+
+      function draw() {
+
+        console.log('ran draw')
+
+        var WIDTH = canvas.width;
+        var HEIGHT = canvas.height;
+        drawVisual = requestAnimationFrame(draw);
+
+        analyser.getFloatFrequencyData(dataArray);
+
+        canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+        var barWidth = (WIDTH / bufferLength) * 2.5;
+        var barHeight;
+        var x = 0;
+
+        for (var i = 0; i < bufferLength; i++) {
+          barHeight = (dataArray[i] + 140)*2;
+          
+          canvasCtx.fillStyle = 'rgb(' + Math.floor(barHeight+100) + ',50,50)';
+          canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+
+          x += barWidth + 1;
+        }
+      }
+
+      draw();
+
+
+
+    }
+
+    function handleError(error) {
+      console.log('navigator.getUserMedia error: ', error);
+    }
+
+    navigator.mediaDevices.getUserMedia(constraints).
+        then(handleSuccess).catch(handleError);
+
+
+
+
+  }
+
   //handle user text input
   textQuery() {
     var query = document.getElementById('query').value;
@@ -105,6 +215,8 @@ class App extends React.Component {
     return (
       <div>
         <div className="ui centered  grid" >
+      <div className ='wrapper'>
+        <div className="ui center aligned basic segment container">
           <ResponseCard response={this.state.response} />
         </div>
         <div className="ui centered grid">
@@ -124,6 +236,8 @@ class App extends React.Component {
             </button>
           </form>
         </div>
+      <canvas className="visualizer" width="640" height="100"></canvas> 
+
       </div>
     )
   }
