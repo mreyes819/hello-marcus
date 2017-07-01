@@ -12,7 +12,7 @@ const fred = require('./fred/engine');
 router.get('/', (req, res) => {
   // send client side info
   console.log('router working')
-  res.send('../react-client/src/index');
+  res.send('../react-client/dist/index.html');
 });
 
 router.get('/saved', (req, res) => {
@@ -31,7 +31,7 @@ router.post('/saved', (req, res) => {
 });
 
 router.post('/voice', (req, res) => {
-  
+
   fred(req.body.RawTranscription, req.body.location)
   .then((data) => {
     res.send(data);
