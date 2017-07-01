@@ -8,9 +8,9 @@ const weather = {
   getResponse: (loc, placeStr, originalStr) => {
 
     console.log('ran weather');
-
+    let query = null
     if(!placeStr) {
-      var query = 'http://api.openweathermap.org/data/2.5/weather?lat=' + loc.lat + '&lon=' + loc.lon;
+      query = 'http://api.openweathermap.org/data/2.5/weather?lat=' + loc.lat + '&lon=' + loc.lon;
     } else {
       query = 'http://api.openweathermap.org/data/2.5/weather?q=' + placeStr;
     }
