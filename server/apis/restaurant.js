@@ -38,7 +38,6 @@ const restaurant = {
         text: response,
         data: restaurantDetails
       };
-      console.log(apiResponse)
       return apiResponse;
     });
   }
