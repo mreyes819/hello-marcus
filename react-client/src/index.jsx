@@ -12,7 +12,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: {type: "text", api: "default", text: "What can I help you with?", data: Object},
       response: {type: "text", api: "cleverbot", text: "What can I help you with?", data: Object},
       location: {},
       micOn: false
