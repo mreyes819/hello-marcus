@@ -41,6 +41,15 @@ npm install -g bower
 npm install
 bower install
 ```
+### Front End
+
+Sign up for Houndify.com and enable speech to text domain. The domain will generate corresponding API key and User ID. Copy the UserID and paste it in client_env.js file from hello-marcus/react-client/src folder.
+
+Run the following code within root directory to run webpack
+```sh
+npm run react-dev
+```
+
 
 ### App PLan
 
