@@ -26,7 +26,7 @@ const restaurant = {
         image: restaurantData.image_url,
         numReviews: restaurantData.review_count,
         rating: restaurantData.rating,
-        website: restaurantData.url
+        website: restaurantData.url.split('?')[0]
       }
       
 
