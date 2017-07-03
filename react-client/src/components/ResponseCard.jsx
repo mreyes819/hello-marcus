@@ -17,10 +17,11 @@ const ResponseCard = ({response}) => {
     ElementName = Yelp;
   }
 
-  let divStyle = {width: '400px', marginTop: '100px'};
+  const divStyle = {width: '400px', marginTop: '100px'};
+  const textStyle ={marginTop: '20px', marginBottom: '200px', height: '300px', fontSize: '30px', borderStyle: 'none', boxShadow:'none', wordWrap: 'normal', wordBreak: 'break-all', whiteSpace: 'normal' };
 
   return(
-    <div className="ui card" style={divStyle}>
+    <div className="ui center aligned segment" style={textStyle}>
       <ElementName response={response} />
     </div>
   );

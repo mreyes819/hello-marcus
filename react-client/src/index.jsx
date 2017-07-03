@@ -124,9 +124,9 @@ class App extends React.Component {
 
 
   render () {
-    let border = {border: 0, outline: 'none'};
-    let textStyle ={ marginTop: '10px', fontSize: '30px', borderStyle: 'none', boxShadow:'none', wordWrap: 'normal', wordBreak: 'break-all', whiteSpace: 'normal' };
-    let visualizerStyle = {width: '100%'};
+    const border = {border: 0, outline: 'none'};
+    const textStyle ={ marginTop: '10px', fontSize: '20px', borderStyle: 'none', boxShadow:'none', wordWrap: 'normal', wordBreak: 'break-all', whiteSpace: 'normal' };
+    const visualizerStyle = {width: '100%'};
 
     return (
       <div className="wrapper">
@@ -143,7 +143,7 @@ class App extends React.Component {
           </form>
         </div>
         <div className="ui center aligned segment" style={textStyle}>
-          <p id="query">hello hello</p>
+          <p id="query">Hello Marcus</p>
         </div>
         <canvas className="visualizer" style={visualizerStyle}></canvas>
       </div>
