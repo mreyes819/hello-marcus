@@ -1,9 +1,9 @@
 import React from 'react';
 
 const DefaultContent = ({response}) =>  {
-  const divStyle = {width: '400px'};
+  const paragraphStyle = {width: '270px'};
   return (
-    <p>{response.text}</p>
+    <p style={paragraphStyle}>{response.text}</p>
   );
 }
 
