@@ -127,7 +127,7 @@ class App extends React.Component {
     var border = {border: 0, outline: 'none'};
     return (
    <div className="wrapper">
-        <div className="ui centered  grid" >
+        <div className="ui centered grid" >
           <ResponseCard response={this.state.response} />
         </div>
         <div className="ui centered grid">
