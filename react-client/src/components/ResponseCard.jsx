@@ -6,7 +6,6 @@ import Yelp from './Yelp.jsx';
 
 const ResponseCard = ({response}) => {
   let ElementName;
-  let divStyle = {width: '400px', marginTop: '100px'};
   //default state: before making any request
   if(response.api === "default") {
     ElementName = DefaultContent;
@@ -18,6 +17,8 @@ const ResponseCard = ({response}) => {
     ElementName = Yelp;
   }
 
+  let divStyle = {width: '400px', marginTop: '100px'};
+
   return(
     <div className="ui card" style={divStyle}>
       <ElementName response={response} />
@@ -26,3 +27,5 @@ const ResponseCard = ({response}) => {
 }
 
 export default ResponseCard;
+
+

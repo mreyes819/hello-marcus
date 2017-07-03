@@ -30,7 +30,7 @@
 
         let source = audioCtx.createMediaStreamSource(stream);
         source.connect(analyser);
-        analyser.connect(distortion); 
+        analyser.connect(distortion);
         source.connect(analyser);
         analyser.connect(distortion);
         distortion.connect(biquadFilter);
@@ -62,7 +62,7 @@
 
           if (that.state.micOn) {
             drawVisual = requestAnimationFrame(draw);
-          } 
+          }
 
           analyser.getFloatFrequencyData(dataArray);
 
@@ -76,18 +76,18 @@
           if (that.state.micOn) {
             for (let i = 0; i < bufferLength; i++) {
               barHeight = (dataArray[i] + 140)*1;
-              
-              canvasCtx.fillStyle = 'rgb(' + Math.floor(barHeight) + ',0,0)';
-              canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight/2);
+
+              canvasCtx.fillStyle = 'rgb(' /*+ Math.floor(barHeight)*/ + '0,0,0)';
+              canvasCtx.fillRect(x,HEIGHT-barHeight*2,barWidth,barHeight*2);
 
               x += barWidth + 1;
 
-            } 
+            }
 
           } else {
             audioCtx.close();
           }
-  
+
         }
 
         draw();
@@ -103,4 +103,4 @@
 
  };
 
-  
+

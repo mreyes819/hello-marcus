@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: {type: "text", api: "cleverbot", text: "What can I help you with?", data: Object},
+      response: {type: "text", api: "default", text: "What can I help you with?", data: Object},
       location: {},
       micOn: false
     };
@@ -71,7 +71,7 @@ class App extends React.Component {
 
   //handle voice button click
   startStopVoiceSearch() {
-    var myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location, this.handleServerResponse.bind(this), this.setMicState.bind(this)));
+    let myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location, this.handleServerResponse.bind(this), this.setMicState.bind(this)));
     if (myClient.voiceSearch.isStreaming()) {
       console.log('window object stop', window);
       //stops streaming voice search requests, expects the final response from backend
@@ -90,15 +90,15 @@ class App extends React.Component {
       ///audio frequency stop
       //starts streaming of voice search requests to Houndify backend
       document.getElementById("voiceIcon").className = "loading circle notched icon big";
-      document.getElementById("textSearchButton").disabled = true;
-      document.getElementById("query").readOnly = true;
+      // document.getElementById("textSearchButton").disabled = true;
+      // document.getElementById("query").readOnly = true;
     }
   }
 
 
-  //handle user text input
+  //for testing only: handle user text input
   textQuery() {
-    var query = document.getElementById('query').value;
+    let query = document.getElementById('query').value;
     console.log(query);
     console.log(this.state.location)
     $.ajax({
@@ -124,9 +124,12 @@ class App extends React.Component {
 
 
   render () {
-    var border = {border: 0, outline: 'none'};
+    let border = {border: 0, outline: 'none'};
+    let textStyle ={ marginTop: '10px', fontSize: '30px', borderStyle: 'none', boxShadow:'none', wordWrap: 'normal', wordBreak: 'break-all', whiteSpace: 'normal' };
+    let visualizerStyle = {width: '100%'};
+
     return (
-   <div className="wrapper">
+      <div className="wrapper">
         <div className="ui centered grid" >
           <ResponseCard response={this.state.response} />
         </div>
@@ -137,20 +140,12 @@ class App extends React.Component {
                 <i id="voiceIcon" className="unmute huge icon"></i>
               </div>
             </div>
-            <div className="ui field" hidden>
-              <label>Response object</label>
-              <textarea id="responseJSON"></textarea>
-            </div>
-            <input id="query" type="text" placeholder="Click on a microphone icon or type in your query" />
-            <button id="textSearchButton" className="ui icon button" onClick= {this.textQuery.bind(this)}>
-               <i className="search big icon"></i>
-            </button>
           </form>
         </div>
-
-        <canvas className="visualizer" width="640" height="100"></canvas> 
-
-
+        <div className="ui center aligned segment" style={textStyle}>
+          <p id="query">hello hello</p>
+        </div>
+        <canvas className="visualizer" style={visualizerStyle}></canvas>
       </div>
     )
   }

@@ -68,6 +68,9 @@ module.exports.houndifyClient = (location, handleServerResponse, setMicState) =>
     onTranscriptionUpdate: function(trObj) {
       var transcriptElt = document.getElementById("query");
       transcriptElt.value = trObj.PartialTranscript;
+      document.getElementById("query").innerHTML = trObj.PartialTranscript;
+
+
     },
 
     //Fires after abort() method is called on search object
@@ -85,9 +88,9 @@ module.exports.houndifyClient = (location, handleServerResponse, setMicState) =>
       document.getElementById("voiceIcon").className = "unmute huge icon";
       setMicState();
 
-      document.getElementById("voiceIcon").className = "unmute big icon";
-      document.getElementById("textSearchButton").disabled = false;
-      document.getElementById("query").readOnly = false;
+      document.getElementById("voiceIcon").className = "unmute huge icon";
+      // document.getElementById("textSearchButton").disabled = false;
+      // document.getElementById("query").readOnly = false;
     },
 
     //Fires every time new audio frame of recording is captured
