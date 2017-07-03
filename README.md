@@ -50,8 +50,64 @@ Run the following code within root directory to run webpack
 npm run react-dev
 ```
 
+### Backend
 
-### App PLan
+## Stack
+
+- Postgres database
+- Express/Node
+
+
+## Backend structure
+
+The main parts of the backend are:
+
+- fred (the AI that powers Marcus)
+- APIs that fred consumes
+- Database models (queries)
+- Core server files such as index.js
+
+## Adding new capabilities to Hello Marcus
+
+Everything runs through fred. 
+
+1. Start by adding an api name to the api table in postgres.
+
+2. Add the words you want to associate with that api to the words table. The words table contains a foreign key to the api table.
+
+3. Add a file in /server/apis folder for your api. Be sure to export that api under server/apis/index.js.
+
+That's it!
+
+
+## Natural language processing
+
+We should a module called compromise to parse the user input string. For now, we're only using the module to parse out the location. 
+
+To learn more about compromise, go to the [doc](https://github.com/nlp-compromise/compromise).
+
+## Using environment keys
+
+We use a module called dotenv that mimic's Heroku's process.env variable. You'll see references to process.env.something  in our code where we need to hide an API key.
+
+To get started, install the dotenv module (should already be in package.json file), create a .env file in your local machine and ask our team for the API keys.  
+
+If you add a variable in your own .env file, you also need to add it on Heroku's servers.
+
+Never check in your .env file to the github. 
+
+*Note that process.env does not work on the front-end for our app.
+
+## Database management
+
+There are two databases: staging and production. If you change something in staging, you have to manually make the same change in production. 
+
+Set your .env file so that your local machine always connects to the staging server . 
+
+Refer to this [document](https://docs.google.com/document/d/1VUalzQ0VXM_Wb5kB-ophp29Ejy7KyNIJ4DT1Dze_TeE/edit) for instructions on how to connect to the staging server and production server.
+
+
+### App plan
 
 View the app plan [here](https://docs.google.com/document/d/1VnS2nWmhrQnm-ed_r_fEU9Qqk9QiBCGFSzvwa8l1ffc/edit)
 
@@ -62,6 +118,7 @@ View the project roadmap [here](https://docs.google.com/spreadsheets/d/1NkW4t51z
 
 ### Style guide
 View the style guide [here](https://github.com/hello-marcus/hello-marcus/blob/master/STYLE-GUIDE.md)
+
 
 
 ## Contributing
