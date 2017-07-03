@@ -2,7 +2,7 @@ import client_env from './client_env.js';
 import $ from 'jquery';
 const clientID = client_env.client_env.houndify_clientID;
 
-module.exports.houndifyClient = (location, handleServerResponse, setMicState) => {
+module.exports.houndifyClient = (location, handleServerResponse, setMicState, setLoadingState) => {
   return {
     //Your Houndify Client ID
     clientId: clientID,
@@ -43,6 +43,7 @@ module.exports.houndifyClient = (location, handleServerResponse, setMicState) =>
           handleServerResponse(null, {type: "text", api: "easteregg", text: "Marcus Dance!!!"});
         } else {
           // Send voice result to server
+          setLoadingState();
           $.ajax({
             url: '/voice',
             method: 'POST',
@@ -59,8 +60,6 @@ module.exports.houndifyClient = (location, handleServerResponse, setMicState) =>
           });
         }
       }
-
-
     },
 
     //Fires if error occurs during the request
@@ -75,8 +74,6 @@ module.exports.houndifyClient = (location, handleServerResponse, setMicState) =>
       var transcriptElt = document.getElementById("query");
       transcriptElt.value = trObj.PartialTranscript;
       document.getElementById("query").innerHTML = trObj.PartialTranscript;
-
-
     },
 
     //Fires after abort() method is called on search object

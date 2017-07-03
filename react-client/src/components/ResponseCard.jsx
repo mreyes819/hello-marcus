@@ -4,6 +4,7 @@ import Cleverbot from './Cleverbot.jsx';
 import Weather from './Weather.jsx';
 import Yelp from './Yelp.jsx';
 import EasterEgg from './EasterEgg.jsx';
+import Loading from './Loading.jsx';
 
 const ResponseCard = ({response}) => {
   let ElementName;
@@ -19,7 +20,8 @@ const ResponseCard = ({response}) => {
     ElementName = Yelp;
   } else if (response.api === "easteregg") {
     ElementName = EasterEgg;
-    console.log('call EasterEgg.jsx');
+  } else if (response.api === "loading") {
+    ElementName = Loading;
   }
 
   const divStyle = {width: '400px', marginTop: '100px'};
