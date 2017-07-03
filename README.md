@@ -82,7 +82,7 @@ That's it!
 
 ## Natural language processing
 
-We should a module called compromise to parse the user input string. For now, we're only using the module to parse out the location. 
+We use a module called compromise to parse the user input string. For now, we're only using the module to parse out the location. 
 
 To learn more about compromise, go to the [doc](https://github.com/nlp-compromise/compromise).
 
