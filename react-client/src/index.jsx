@@ -62,16 +62,20 @@ class App extends React.Component {
   }
 
   setMicState() {
-
     this.setState({
       micOn: false
     });
+  }
 
+  setLoadingState() {
+    this.setState({
+      response: {type: "text", api: "loading", text: "Hang on a moment...", data: Object},
+    });
   }
 
   //handle voice button click
   startStopVoiceSearch() {
-    let myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location, this.handleServerResponse.bind(this), this.setMicState.bind(this)));
+    let myClient = new Houndify.HoundifyClient(houndifyclient.houndifyClient(this.state.location, this.handleServerResponse.bind(this), this.setMicState.bind(this), this.setLoadingState.bind(this)));
     if (myClient.voiceSearch.isStreaming()) {
       console.log('window object stop', window);
       //stops streaming voice search requests, expects the final response from backend
