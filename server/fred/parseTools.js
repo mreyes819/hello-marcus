@@ -91,8 +91,8 @@ const Tools = {
       'ethiopian':'Food'
     };
     let nlpStr = nlp(str, lexicon);
-    console.log(nplStr.match('#Food').out('text'));
-    return nplStr.match('#Food').out('text') || null;
+    console.log(nlpStr.match('#Food').out('text'));
+    return nlpStr.match('#Food').out('text') || null;
   },
 
   constructWeathertext: (str, obj) => {
@@ -107,7 +107,7 @@ const Tools = {
 
   },
   constructFoodText: (str, obj) => {
-    return `You should eat at ${obj.name}`
+    return `I recommend this place.`
   }
 
 };
