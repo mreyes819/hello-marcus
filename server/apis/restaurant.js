@@ -6,8 +6,11 @@ require('dotenv').config();
 const restaurant = {
 
   getResponse: (loc, placeStr, originalStr) => {
+
+    let foodType = fredTools.findFood(originalStr) || 'food';
+
     let options = {
-      uri: `https://api.yelp.com/v3/businesses/search?term=food&longitude=${loc.lon}&latitude=${loc.lat}&sort_by=rating`,
+      uri: `https://api.yelp.com/v3/businesses/search?term=${foodType}&longitude=${loc.lon}&latitude=${loc.lat}&sort_by=rating`,
       method: 'GET',
       headers: {
         'User-Agent': 'Hello-Marcus',
