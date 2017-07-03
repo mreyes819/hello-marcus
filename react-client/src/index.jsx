@@ -130,7 +130,7 @@ class App extends React.Component {
 
     return (
       <div className="wrapper">
-        <div className="ui centered grid" >
+        <div className="ui centered grid">
           <ResponseCard response={this.state.response} />
         </div>
         <div className="ui centered grid">

@@ -36,22 +36,28 @@ module.exports.houndifyClient = (location, handleServerResponse, setMicState) =>
         customResponse.RawTranscription = response.AllResults[0].RawTranscription;
         customResponse.WrittenResponseLong = response.AllResults[0].WrittenResponseLong;
         customResponse.location = location;
-        // Send voice result to server
-
-        $.ajax({
-          url: '/voice',
-          method: 'POST',
-          contentType: 'application/json',
-          data: JSON.stringify(customResponse),
-          success: (data) => {
-            console.log('voice query response from server: ', data);
-            handleServerResponse(null, data);
-          },
-          error: (err) => {
-            console.log('err', err);
-            handleServerResponse(err, null);
-          }
-        });
+        console.log(customResponse.WrittenResponseLong);
+        // Easter egg request is handled in client side
+        if (customResponse.WrittenResponseLong.toLowerCase().includes('dance')) {
+          console.log('Marcus Dance!!!');
+          handleServerResponse(null, {type: "text", api: "easteregg", text: "Marcus Dance!!!"});
+        } else {
+          // Send voice result to server
+          $.ajax({
+            url: '/voice',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(customResponse),
+            success: (data) => {
+              console.log('voice query response from server: ', data);
+              handleServerResponse(null, data);
+            },
+            error: (err) => {
+              console.log('err', err);
+              handleServerResponse(err, null);
+            }
+          });
+        }
       }
 
 
