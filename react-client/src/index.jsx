@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      response: {type: "text", api: "default", text: "What can I help you with?", data: Object},
+      response: {type: "text", api: "default", text: "This is your moment. Ask a question.", data: Object},
       location: {},
       micOn: false
     };
@@ -143,7 +143,7 @@ class App extends React.Component {
           </form>
         </div>
         <div className="ui center aligned segment" style={textStyle}>
-          <p id="query">Hello Marcus</p>
+          <p id="query"></p>
         </div>
         <canvas className="visualizer" style={visualizerStyle}></canvas>
       </div>

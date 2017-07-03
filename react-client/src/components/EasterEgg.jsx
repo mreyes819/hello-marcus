@@ -6,7 +6,7 @@ const EasterEgg = ({response}) =>  {
     <div>
       <p>{response.text}</p>
       <Video autoPlay controls={[]}>
-        <source src="easter-con480.mp4" type="video/mp4" />
+        <source src="./libs/easter-con480.mp4" type="video/mp4" />
         }
       </Video>
     </div>
