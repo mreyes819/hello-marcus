@@ -38,6 +38,63 @@ const Tools = {
 
   },
 
+  findFood: (str) => {
+    // adds food categories to the nlp library
+    const lexicon = {
+      'chinese':'Food',
+      'mexican':'Food',
+      'japanese':'Food',
+      'sushi':'Food',
+      'kimbap':'Food',
+      'burrito':'Food',
+      'indian':'Food',
+      'italian':'Food',
+      'pasta':'Food',
+      'burger':'Food',
+      'pizza':'Food',
+      'american':'Food',
+      'vegetarian':'Food',
+      'healthy':'Food',
+      'salad':'Food',
+      'hotpot':'Food',
+      'szechuan':'Food',
+      'spicy':'Food',
+      'chicken':'Food',
+      'fried':'Food',
+      'chili':'Food',
+      'vietnamese':'Food',
+      'pho':'Food',
+      'french':'Food',
+      'noodles':'Food',
+      'shanghai':'Food',
+      'vegan':'Food',
+      'filipino':'Food',
+      'tamales':'Food',
+      'phillipines':'Food',
+      'thai':'Food',
+      'curry':'Food',
+      'naan':'Food',
+      'mediterannean':'Food',
+      'chipotle':'Food',
+      'nachos':'Food',
+      'hotdog':'Food',
+      'cheese':'Food',
+      'beer':'Food',
+      'bars':'Food',
+      'alcohol':'Food',
+      'drinks':'Food',
+      'boba':'Food',
+      'milk tea':'Food',
+      'tea':'Food',
+      'dessert':'Food',
+      'ice cream':'Food',
+      'ethiopian':'Food'
+    };
+    let nlpStr = nlp(str, lexicon);
+    console.log(nlpStr.match('#Food').out('text'));
+    return nlpStr.match('#Food').out('text') || null;
+  },
+
   constructWeathertext: (str, obj) => {
 
     let weatherLogic = model.words.getWeatherString(obj)
@@ -50,7 +107,7 @@ const Tools = {
 
   },
   constructFoodText: (str, obj) => {
-    return `You should eat at ${obj.name}`
+    return `I recommend this place.`
   }
 
 };

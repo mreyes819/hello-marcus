@@ -3,7 +3,7 @@ import React from 'react';
 const Yelp = ({response}) => {
   return (
     <div>
-      <p>I recommand this place:</p>
+      <p>{response.text}</p>
       <img className='ui medium image center align' src={response.data.image}></img>
       <p>{response.data.name}</p>
       <p>Reviews: {response.data.numReviews}</p>
