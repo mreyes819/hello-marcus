@@ -27,7 +27,7 @@ router.get('/saved', (req, res) => {
 router.post('/saved', (req, res) => {
   // save query
   // this should save the API call as well as the parameters.
-  res.send('post to history endpoint')
+  res.send('post to history endpoint');
 });
 
 router.post('/voice', (req, res) => {
@@ -37,8 +37,17 @@ router.post('/voice', (req, res) => {
     res.send(data);
   })
   .catch((error) => {
+    //construct fake clever bot object
+
+    let obj = {
+      text: 'Something went wrong with fred. Try again.',
+      data: error,
+      type: 'text',
+      api: 'cleverbot'
+    };
+
     console.log('fred error: ', error);
-    res.send('Sorry, something went wrong');
+    res.send(obj);
   });
 
 });
